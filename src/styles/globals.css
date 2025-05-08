@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        --color-xd-blue: #004080;
+        --color-xd-red: #D32F2F;
+        --color-xd-gray-1: #4B5563;
+    }
+}
+
+/* Configuración básica de la raíz */
+:root {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Poppins', sans-serif;
+}
+
+@layer utilities {
+    .container-xd {
+        @apply mx-auto w-[95%] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[1080px] xl:max-w-[1280px] xl:px-4 2xl:max-w-[1536px];
+    }
+
+    /* Utilidades para los colores personalizados */
+    .bg-xd-blue {
+        background-color: var(--color-xd-blue);
+    }
+
+    .text-xd-blue {
+        color: var(--color-xd-blue);
+    }
+
+    .border-xd-blue {
+        border-color: var(--color-xd-blue);
+    }
+
+    .bg-xd-red {
+        background-color: var(--color-xd-red);
+    }
+
+    .text-xd-red {
+        color: var(--color-xd-red);
+    }
+
+    .border-xd-red {
+        border-color: var(--color-xd-red);
+    }
+
+    .bg-xd-gray-1 {
+        background-color: var(--color-xd-gray-1);
+    }
+
+    .text-xd-gray-1 {
+        color: var(--color-xd-gray-1);
+    }
+
+    .border-xd-gray-1 {
+        border-color: var(--color-xd-gray-1);
+    }
+}
