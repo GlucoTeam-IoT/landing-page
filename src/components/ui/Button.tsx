@@ -2,6 +2,7 @@ import React, { type ReactNode } from "react";
 
 export interface ButtonProps {
   children: ReactNode;
+  type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "blue" | "red";
   size?: "sm" | "md" | "lg";
   rounded?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
@@ -15,6 +16,7 @@ export interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   children,
+  type = "button",
   variant = "primary",
   size = "md",
   rounded = "2xl",
@@ -70,7 +72,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes}>
       {children}
     </button>
   );
