@@ -5,9 +5,9 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="flex items-center pt-24 pb-16 md:h-[100vh] md:py-32"
+      className="flex items-center pt-24 pb-16 md:h-[100vh] md:py-32 container-xd"
     >
-      <div className="container-xd flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+      <div className=" flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
         {/* Left Content - Text */}
         <div className="w-full md:w-1/2 space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-xd-blue leading-tight">
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
 
           <div className="pt-4">
             <Button variant="red" size="lg" rounded="full" href="#download">
-              Descargar App
+              Download App
             </Button>
           </div>
         </div>
