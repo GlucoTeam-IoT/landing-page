@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { navbarConfig } from "../../utils/consts/navbar";
 import Button from "./Button";
+import { Twirl as Hamburger } from "hamburger-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   // Handle scrolling effect
   useEffect(() => {
@@ -22,31 +25,56 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        navRef.current &&
+        !navRef.current.contains(event.target as Node) &&
+        isMobileMenuOpen
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
     e.preventDefault();
 
+    // Close mobile menu immediately
+    setIsMobileMenuOpen(false);
+
     if (href.startsWith("#")) {
       const section = document.querySelector(href);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        console.warn(`Section with selector "${href}" not found.`);
       }
-      // Close mobile menu if open
-      setIsMobileMenuOpen(false);
     } else {
-      // Handle regular navigation for non-anchor links
-      window.location.href = href;
+      setTimeout(() => {
+        window.location.href = href;
+      }, 100);
     }
   };
 
   return (
     <nav
+      ref={navRef}
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white shadow-md"
-          : "bg-white bg-opacity-95 py-2 shadow-sm"
+          : "bg-white py-2 lg:bg-opacity-95 lg:shadow-sm"
       }`}
     >
       <div className="container-xd flex items-center justify-between">
@@ -60,7 +88,7 @@ const Navbar: React.FC = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-6">
           {navbarConfig.navItems.map((item) => (
             <React.Fragment key={item.id}>
               {item.isButton ? (
@@ -89,73 +117,74 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-gray-800 focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+        {/* Mobile menu button using hamburger-react */}
+        <div className="lg:hidden">
+          <Hamburger
+            toggled={isMobileMenuOpen}
+            toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            size={20}
+            direction="right"
+            color="#004080"
+            duration={0.3}
+          />
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <div className="container-xd py-4">
-            <div className="flex flex-col space-y-4">
-              {navbarConfig.navItems.map((item) => (
-                <React.Fragment key={item.id}>
-                  {item.isButton ? (
-                    <Button
-                      variant="red"
-                      href={item.href}
-                      onClick={(e) =>
-                        scrollToSection(
-                          e as React.MouseEvent<HTMLAnchorElement>,
-                          item.href
-                        )
-                      }
-                      fullWidth
-                    >
-                      {item.label}
-                    </Button>
-                  ) : (
+      {/* Mobile Menu animation using Framer Motion */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="lg:hidden bg-white "
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="container-xd py-6">
+              <motion.div
+                className="flex flex-col items-center space-y-5"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.1,
+                      delayChildren: 0.1,
+                    },
+                  },
+                }}
+              >
+                {navbarConfig.navItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    className="w-full text-center"
+                    variants={{
+                      hidden: { y: 20, opacity: 0 },
+                      visible: {
+                        y: 0,
+                        opacity: 1,
+                        transition: { duration: 0.4, ease: "easeOut" },
+                      },
+                    }}
+                  >
                     <a
                       href={item.href}
                       onClick={(e) => scrollToSection(e, item.href)}
-                      className="text-gray-800 hover:text-xd-blue"
+                      className={`block py-2 text-lg font-medium ${
+                        item.isButton ? "text-xd-red" : "text-xd-blue"
+                      } hover:opacity-80 transition-opacity`}
                     >
                       {item.label}
                     </a>
-                  )}
-                </React.Fragment>
-              ))}
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
