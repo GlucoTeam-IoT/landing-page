@@ -4,15 +4,15 @@ import { BiLogoPlayStore } from "react-icons/bi";
 
 const DownloadApp: React.FC = () => {
   return (
-    <section id="download" className="py-20">
-      <div className="container-xd text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-xd-blue">
+    <section id="download" className="py-20 container-xd">
+      <div className=" text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold lg:block hidden text-xd-blue">
           Download GlucoVa
         </h2>
       </div>
 
       {/* Contenido principal */}
-      <div className="container-xd flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
         <div className="w-full md:w-1/2 flex justify-center md:justify-start order-2 md:order-1">
           <div className="relative md:w-[416px] xl:w-[592px]">
             <div className="absolute rounded-full bg-gradient-to-r from-xd-blue/10 to-xd-red/10 blur-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
