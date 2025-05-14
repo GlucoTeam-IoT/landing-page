@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# Glucova Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies
 
-Currently, two official plugins are available:
+- **React** - Frontend library for building user interfaces
+- **TypeScript** - Static type-checking for JavaScript
+- **Vite** - Next-generation frontend tooling
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library for React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Additional Libraries
 
-## Expanding the ESLint configuration
+- **Hamburger React** - Animated hamburger menu component
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Responsive Design
+
+- Fully responsive layout that works seamlessly across mobile, tablet, and desktop devices
+- Mobile-friendly navigation with animated hamburger menu
+- Different UI components optimized for various screen sizes
+
+### Interactive UI Elements
+
+- Smooth scroll navigation between sections
+- Animated section reveals using Framer Motion
+- Interactive navigation with visual feedback
+
+### Sections
+
+1. **Home/Hero** - Introduction to GlucoVa with main call-to-action
+2. **About** - Information about the app's purpose and goals
+3. **Features** - Highlights of key app functionalities
+4. **Download** - App download options with mobile device preview
+5. **Team** - Profiles of team members
+6. **Contact** - Contact form and information
+7. **Authentication** - Links to login and signup pages
+
+## Project Structure
+
+- `src/components` - Reusable UI components
+- `src/components/ui` - Core UI elements (Navbar, Button, etc.)
+- `src/components/sections` - Main page sections
+- `src/utils/consts` - Configuration data (navbar items, features, etc.)
+- `public` - Static assets (images, icons)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/GlucoTeam-IoT/landing-page.git
+
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Start development server
+npm run dev
+# or
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The development server will start at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run build
+# or
+yarn build
 ```
