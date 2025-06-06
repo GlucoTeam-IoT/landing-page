@@ -75,28 +75,42 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav
+    <motion.nav
       ref={navRef}
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white shadow-md"
           : "bg-white py-2 lg:bg-opacity-95 lg:shadow-sm"
       }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="container-xd flex items-center justify-between">
         {/* Logo */}
-        <a href={navbarConfig.logo.href} className="flex items-center">
+        <motion.a
+          href={navbarConfig.logo.href}
+          className="flex items-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <img
             src={navbarConfig.logo.src}
             alt={navbarConfig.logo.alt}
             className="h-14 w-auto"
           />
-        </a>
+        </motion.a>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-6">
-          {navbarConfig.navItems.map((item) => (
-            <React.Fragment key={item.id}>
+        <div className="hidden xl:flex items-center space-x-6">
+          {navbarConfig.navItems.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+            >
               {item.isButton ? (
                 <Button
                   variant="red"
@@ -114,16 +128,21 @@ const Navbar: React.FC = () => {
                 <a
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="hover:text-gray-800 text-xd-blue transition-colors"
+                  className="hover:text-xd-red text-xd-blue transition-colors"
                 >
                   {t(item.id, { ns: "navbar" })}
                 </a>
               )}
-            </React.Fragment>
+            </motion.div>
           ))}
 
           {/* Language switcher */}
-          <div className="flex items-center space-x-3 ml-4">
+          <motion.div
+            className="flex items-center space-x-3 ml-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.8 }}
+          >
             <button
               onClick={() => changeLanguage("es")}
               className={`font-medium ${
@@ -144,11 +163,16 @@ const Navbar: React.FC = () => {
             >
               EN
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Mobile menu button using hamburger-react */}
-        <div className="lg:hidden flex items-center">
+        <motion.div
+          className="xl:hidden flex items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           {/* Language switcher for mobile */}
           <div className="flex items-center space-x-5 mr-4">
             <button
@@ -181,14 +205,14 @@ const Navbar: React.FC = () => {
             color="#004080"
             duration={0.3}
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Mobile Menu animation using Framer Motion */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden bg-white "
+            className="xl:hidden bg-white "
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -239,7 +263,7 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 

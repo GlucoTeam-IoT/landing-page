@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import Button from "../ui/Button";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import { motion, useInView } from "framer-motion";
 
 const ContactUs: React.FC = () => {
   const { t } = useTranslation("contact");
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,18 +32,28 @@ const ContactUs: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 container-xd ">
+    <section id="contact" className="py-20 container-xd" ref={ref}>
       <div className="container-xd">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-xd-blue mb-4">
             {t("title")}
           </h2>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col md:flex-row gap-10">
           {/* Contact Form */}
-          <div className="w-full md:w-1/2">
+          <motion.div
+            className="w-full md:w-1/2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -109,42 +123,75 @@ const ContactUs: React.FC = () => {
                 </Button>
               </div>
             </form>
-          </div>
+          </motion.div>
 
           {/* Right Column - Contact Info & Map */}
-          <div className="w-full md:w-1/2">
+          <motion.div
+            className="w-full md:w-1/2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <h3 className="text-2xl font-bold text-xd-blue mb-6">
               {t("info.title")}
             </h3>
 
             <div className="space-y-4 mb-8">
               {/* Email */}
-              <div className="flex items-center">
+              <motion.div
+                className="flex items-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
                 <div className="text-xd-red mr-3">
                   <MdEmail className="w-6 h-6" />
                 </div>
                 <span className="text-gray-800">{t("info.email")}</span>
-              </div>
+              </motion.div>
 
               {/* Phone */}
-              <div className="flex items-center">
+              <motion.div
+                className="flex items-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
                 <div className="text-xd-red mr-3">
                   <MdPhone className="w-6 h-6" />
                 </div>
                 <span className="text-gray-800">{t("info.phone")}</span>
-              </div>
+              </motion.div>
 
               {/* Address */}
-              <div className="flex items-center">
+              <motion.div
+                className="flex items-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
                 <div className="text-xd-red mr-3">
                   <MdLocationOn className="w-6 h-6" />
                 </div>
                 <span className="text-gray-800">{t("info.address")}</span>
-              </div>
+              </motion.div>
             </div>
 
             {/* Google Map (simple implementation) */}
-            <div className="w-full h-64 bg-gray-200 rounded-lg overflow-hidden">
+            <motion.div
+              className="w-full h-64 bg-gray-200 rounded-lg overflow-hidden"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+              }
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               <iframe
                 title="GlucoVa Location"
                 className="w-full h-full"
@@ -152,8 +199,8 @@ const ContactUs: React.FC = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

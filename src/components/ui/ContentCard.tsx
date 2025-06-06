@@ -5,6 +5,7 @@ interface ContentCardProps {
   title: string;
   description: string;
   useShadow?: boolean;
+  className?: string; // Añadimos prop para clases adicionales
 }
 
 const ContentCard: React.FC<ContentCardProps> = ({
@@ -12,15 +13,16 @@ const ContentCard: React.FC<ContentCardProps> = ({
   title,
   description,
   useShadow = false,
+  className = "",
 }) => {
   // Verificar si existe un ícono con ese nombre en public/icons
   const iconPath = `/icons/${icon}.svg`;
 
   return (
     <div
-      className={`p-6 bg-white rounded-xl ${
+      className={`p-6 bg-white rounded-xl h-full ${
         useShadow ? "shadow-lg" : "border border-gray-200"
-      } flex flex-col items-start transition-all duration-300 hover:translate-y-[-5px]`}
+      } flex flex-col items-start transition-all duration-300 hover:translate-y-[-5px] ${className}`}
     >
       {/* Icon */}
       <div className="text-xd-red mb-4">

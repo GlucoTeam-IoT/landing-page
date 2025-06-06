@@ -44,6 +44,10 @@
         color: var(--color-xd-red);
     }
 
+    .hover\:text-xd-red:hover {
+        color: var(--color-xd-red);
+    }
+
     .border-xd-red {
         border-color: var(--color-xd-red);
     }

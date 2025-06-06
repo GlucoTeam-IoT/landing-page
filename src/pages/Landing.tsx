@@ -9,7 +9,7 @@ import Navbar from "../components/ui/Navbar";
 
 const Landing = () => {
   return (
-    <>
+    <div className="overflow-x-hidden w-full">
       <Navbar />
       <div className="container-xd">
         <Hero />
@@ -24,7 +24,7 @@ const Landing = () => {
       <div className="bg-xd-blue">
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

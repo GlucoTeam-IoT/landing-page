@@ -7,9 +7,12 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { motion, useInView } from "framer-motion";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation(["footer", "navbar"]);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -38,23 +41,43 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <footer className="container-xd text-white py-16">
+    <footer className="container-xd text-white py-16" ref={ref}>
       <div className="container-xd">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="col-span-1 md:col-span-2 lg:col-span-2">
-            <div className="mb-6">
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <img
                 src="/icons/glucovaWhite.png"
                 alt="GlucoVa Logo"
                 className="h-16 w-auto"
               />
-            </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+            </motion.div>
+            <motion.p
+              className="text-gray-300 mb-6 max-w-md"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               {t("description", { ns: "footer" })}
-            </p>
+            </motion.p>
 
             {/* Social Media Icons */}
-            <div className="flex space-x-4">
+            <motion.div
+              className="flex space-x-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               <a
                 href="https://facebook.com"
                 className="hover:text-xd-red transition-colors"
@@ -79,11 +102,15 @@ const Footer: React.FC = () => {
               >
                 <FaLinkedinIn size={30} />
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Enlaces principales */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <h3 className="font-semibold text-lg mb-4">
               {t("navigation", { ns: "footer" })}
             </h3>
@@ -100,10 +127,14 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Cuenta */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h3 className="font-semibold text-lg mb-4">
               {t("account", { ns: "footer" })}
             </h3>
@@ -119,11 +150,16 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Separador */}
-        <div className="border-t border-gray-300 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center">
+        <motion.div
+          className="border-t border-gray-300 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <p className="text-sm text-gray-300">
             &copy; {new Date().getFullYear()} GlucoVa.{" "}
             {t("rights", { ns: "footer" })}
@@ -140,7 +176,7 @@ const Footer: React.FC = () => {
               {t("links.cookies", { ns: "footer" })}
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
