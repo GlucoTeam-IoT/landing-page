@@ -123,23 +123,23 @@ const Navbar: React.FC = () => {
           ))}
 
           {/* Language switcher */}
-          <div className="flex items-center space-x-2 ml-4">
+          <div className="flex items-center space-x-3 ml-4">
             <button
               onClick={() => changeLanguage("es")}
-              className={`px-2 py-1 rounded ${
+              className={`font-medium ${
                 i18n.language === "es"
-                  ? "bg-xd-blue text-white"
-                  : "bg-gray-200 text-gray-600"
+                  ? "text-xd-red border-b-2 border-xd-red"
+                  : "text-gray-600 hover:text-xd-red"
               }`}
             >
               ES
             </button>
             <button
               onClick={() => changeLanguage("en")}
-              className={`px-2 py-1 rounded ${
+              className={`font-medium ${
                 i18n.language === "en"
-                  ? "bg-xd-blue text-white"
-                  : "bg-gray-200 text-gray-600"
+                  ? "text-xd-red border-b-2 border-xd-red"
+                  : "text-gray-600 hover:text-xd-red"
               }`}
             >
               EN
@@ -150,26 +150,26 @@ const Navbar: React.FC = () => {
         {/* Mobile menu button using hamburger-react */}
         <div className="lg:hidden flex items-center">
           {/* Language switcher for mobile */}
-          <div className="flex items-center space-x-1 mr-4">
-            <button
-              onClick={() => changeLanguage("en")}
-              className={`px-1.5 py-0.5 text-sm rounded ${
-                i18n.language === "en"
-                  ? "bg-xd-blue text-white"
-                  : "bg-gray-200 text-gray-600"
-              }`}
-            >
-              EN
-            </button>
+          <div className="flex items-center space-x-5 mr-4">
             <button
               onClick={() => changeLanguage("es")}
-              className={`px-1.5 py-0.5 text-sm rounded ${
+              className={`font-medium ${
                 i18n.language === "es"
-                  ? "bg-xd-blue text-white"
-                  : "bg-gray-200 text-gray-600"
+                  ? "text-xd-red border-b-2 border-xd-red"
+                  : "text-gray-600 hover:text-xd-red"
               }`}
             >
               ES
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={`font-medium ${
+                i18n.language === "en"
+                  ? "text-xd-red border-b-2 border-xd-red"
+                  : "text-gray-600 hover:text-xd-red"
+              }`}
+            >
+              EN
             </button>
           </div>
 
