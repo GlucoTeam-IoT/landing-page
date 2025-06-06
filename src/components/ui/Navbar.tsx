@@ -3,11 +3,17 @@ import { navbarConfig } from "../../utils/consts/navbar";
 import Button from "./Button";
 import { Twirl as Hamburger } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   // Handle scrolling effect
   useEffect(() => {
@@ -102,7 +108,7 @@ const Navbar: React.FC = () => {
                     )
                   }
                 >
-                  {item.label}
+                  {t(item.id, { ns: "navbar" })}
                 </Button>
               ) : (
                 <a
@@ -110,15 +116,63 @@ const Navbar: React.FC = () => {
                   onClick={(e) => scrollToSection(e, item.href)}
                   className="hover:text-gray-800 text-xd-blue transition-colors"
                 >
-                  {item.label}
+                  {t(item.id, { ns: "navbar" })}
                 </a>
               )}
             </React.Fragment>
           ))}
+
+          {/* Language switcher */}
+          <div className="flex items-center space-x-2 ml-4">
+            <button
+              onClick={() => changeLanguage("es")}
+              className={`px-2 py-1 rounded ${
+                i18n.language === "es"
+                  ? "bg-xd-blue text-white"
+                  : "bg-gray-200 text-gray-600"
+              }`}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={`px-2 py-1 rounded ${
+                i18n.language === "en"
+                  ? "bg-xd-blue text-white"
+                  : "bg-gray-200 text-gray-600"
+              }`}
+            >
+              EN
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu button using hamburger-react */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center">
+          {/* Language switcher for mobile */}
+          <div className="flex items-center space-x-1 mr-4">
+            <button
+              onClick={() => changeLanguage("en")}
+              className={`px-1.5 py-0.5 text-sm rounded ${
+                i18n.language === "en"
+                  ? "bg-xd-blue text-white"
+                  : "bg-gray-200 text-gray-600"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => changeLanguage("es")}
+              className={`px-1.5 py-0.5 text-sm rounded ${
+                i18n.language === "es"
+                  ? "bg-xd-blue text-white"
+                  : "bg-gray-200 text-gray-600"
+              }`}
+            >
+              ES
+            </button>
+          </div>
+
           <Hamburger
             toggled={isMobileMenuOpen}
             toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -176,7 +230,7 @@ const Navbar: React.FC = () => {
                         item.isButton ? "text-xd-red" : "text-xd-blue"
                       } hover:opacity-80 transition-opacity`}
                     >
-                      {item.label}
+                      {t(item.id, { ns: "navbar" })}
                     </a>
                   </motion.div>
                 ))}

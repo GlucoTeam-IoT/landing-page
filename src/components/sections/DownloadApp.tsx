@@ -1,13 +1,16 @@
 import React from "react";
 import { FaApple } from "react-icons/fa";
 import { BiLogoPlayStore } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 
 const DownloadApp: React.FC = () => {
+  const { t } = useTranslation("download");
+
   return (
     <section id="download" className="py-20 container-xd">
-      <div className=" text-center mb-12">
+      <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold lg:block hidden text-xd-blue">
-          Download GlucoVa
+          {t("title")}
         </h2>
       </div>
 
@@ -26,12 +29,11 @@ const DownloadApp: React.FC = () => {
 
         <div className="w-full md:w-1/2 space-y-6 order-1 md:order-2">
           <h3 className="text-3xl md:text-4xl font-bold text-xd-blue text-center leading-tight">
-            Get Started Today
+            {t("subtitle")}
           </h3>
 
           <p className="text-xd-gray-1 text-lg text-center">
-            Download GlucoVa and take the first step towards better diabetes
-            management.
+            {t("description")}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
@@ -41,7 +43,7 @@ const DownloadApp: React.FC = () => {
               className="inline-flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition-all"
             >
               <FaApple className="h-6 w-6 mr-2" />
-              Download for iOS
+              {t("ios")}
             </a>
 
             {/* Android Download Button */}
@@ -50,7 +52,7 @@ const DownloadApp: React.FC = () => {
               className="inline-flex items-center justify-center bg-xd-red text-white px-6 py-3 rounded-2xl hover:bg-opacity-90 transition-all"
             >
               <BiLogoPlayStore className="h-6 w-6 mr-2" />
-              Download for Android
+              {t("android")}
             </a>
           </div>
         </div>

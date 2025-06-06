@@ -1,18 +1,19 @@
 import React from "react";
 import MemberCard from "../ui/MemberCard";
 import { teamConfig } from "../../utils/consts/members";
+import { useTranslation } from "react-i18next";
 
 const Team: React.FC = () => {
+  const { t } = useTranslation("team");
+
   return (
     <section id="team" className="py-20 container-xd">
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-xd-blue mb-4">
-          {teamConfig.title}
+          {t("title")}
         </h2>
-        <p className="text-xd-gray-1 max-w-2xl mx-auto">
-          {teamConfig.subtitle}
-        </p>
+        <p className="text-xd-gray-1 max-w-2xl mx-auto">{t("subtitle")}</p>
       </div>
 
       {/* Team Grid */}

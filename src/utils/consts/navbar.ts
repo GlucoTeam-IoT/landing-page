@@ -1,6 +1,5 @@
 export interface NavItem {
   id: string;
-  label: string;
   href: string;
   isButton?: boolean;
 }
@@ -23,42 +22,34 @@ export const navbarConfig: NavbarConfig = {
   navItems: [
     {
       id: "home",
-      label: "Home",
       href: "#home",
     },
     {
       id: "about",
-      label: "About",
       href: "#about",
     },
     {
       id: "features",
-      label: "Features",
       href: "#features",
     },
     {
       id: "download",
-      label: "Download",
       href: "#download",
     },
     {
       id: "team",
-      label: "Team",
       href: "#team",
     },
     {
       id: "contact",
-      label: "Contact",
       href: "#contact",
     },
     {
       id: "login",
-      label: "Login",
       href: "https://glucovaapp.netlify.app/",
     },
     {
       id: "signup",
-      label: "Sign Up",
       href: "https://glucovaapp.netlify.app/",
       isButton: true,
     },

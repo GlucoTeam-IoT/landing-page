@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 const ContactUs: React.FC = () => {
+  const { t } = useTranslation("contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,7 +33,7 @@ const ContactUs: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-xd-blue mb-4">
-            Contact Us
+            {t("title")}
           </h2>
         </div>
 
@@ -44,7 +46,7 @@ const ContactUs: React.FC = () => {
                   htmlFor="name"
                   className="block text-gray-700 mb-2 font-medium"
                 >
-                  Name
+                  {t("name.label")}
                 </label>
                 <input
                   type="text"
@@ -53,7 +55,7 @@ const ContactUs: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-xd-blue focus:border-xd-blue"
-                  placeholder="Your name"
+                  placeholder={t("name.placeholder")}
                   required
                 />
               </div>
@@ -63,7 +65,7 @@ const ContactUs: React.FC = () => {
                   htmlFor="email"
                   className="block text-gray-700 mb-2 font-medium"
                 >
-                  Email
+                  {t("email.label")}
                 </label>
                 <input
                   type="email"
@@ -72,7 +74,7 @@ const ContactUs: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-xd-blue focus:border-xd-blue"
-                  placeholder="your.email@example.com"
+                  placeholder={t("email.placeholder")}
                   required
                 />
               </div>
@@ -82,7 +84,7 @@ const ContactUs: React.FC = () => {
                   htmlFor="message"
                   className="block text-gray-700 mb-2 font-medium"
                 >
-                  Message
+                  {t("message.label")}
                 </label>
                 <textarea
                   id="message"
@@ -91,7 +93,7 @@ const ContactUs: React.FC = () => {
                   onChange={handleChange}
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-xd-blue focus:border-xd-blue"
-                  placeholder="Your message"
+                  placeholder={t("message.placeholder")}
                   required
                 />
               </div>
@@ -103,7 +105,7 @@ const ContactUs: React.FC = () => {
                   size="lg"
                   className="font-medium"
                 >
-                  Send Message
+                  {t("button")}
                 </Button>
               </div>
             </form>
@@ -112,7 +114,7 @@ const ContactUs: React.FC = () => {
           {/* Right Column - Contact Info & Map */}
           <div className="w-full md:w-1/2">
             <h3 className="text-2xl font-bold text-xd-blue mb-6">
-              Get in Touch
+              {t("info.title")}
             </h3>
 
             <div className="space-y-4 mb-8">
@@ -121,7 +123,7 @@ const ContactUs: React.FC = () => {
                 <div className="text-xd-red mr-3">
                   <MdEmail className="w-6 h-6" />
                 </div>
-                <span className="text-gray-800">contact@glucova.com</span>
+                <span className="text-gray-800">{t("info.email")}</span>
               </div>
 
               {/* Phone */}
@@ -129,7 +131,7 @@ const ContactUs: React.FC = () => {
                 <div className="text-xd-red mr-3">
                   <MdPhone className="w-6 h-6" />
                 </div>
-                <span className="text-gray-800">+51 902 614 512</span>
+                <span className="text-gray-800">{t("info.phone")}</span>
               </div>
 
               {/* Address */}
@@ -137,9 +139,7 @@ const ContactUs: React.FC = () => {
                 <div className="text-xd-red mr-3">
                   <MdLocationOn className="w-6 h-6" />
                 </div>
-                <span className="text-gray-800">
-                  Av. de la Marina 2810, San Miguel 15087, Lima, Peru
-                </span>
+                <span className="text-gray-800">{t("info.address")}</span>
               </div>
             </div>
 

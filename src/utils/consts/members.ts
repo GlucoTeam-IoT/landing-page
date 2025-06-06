@@ -6,14 +6,10 @@ export interface TeamMember {
 }
 
 export interface TeamConfig {
-  title: string;
-  subtitle: string;
   members: TeamMember[];
 }
 
 export const teamConfig: TeamConfig = {
-  title: "Meet Our Team",
-  subtitle: "Meet the passionate people behind GlucoVa's innovation",
   members: [
     {
       id: "alejandra-diaz",

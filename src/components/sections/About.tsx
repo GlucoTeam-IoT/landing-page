@@ -1,18 +1,19 @@
 import React from "react";
 import ContentCard from "../ui/ContentCard";
 import { aboutConfig } from "../../utils/consts/about";
+import { useTranslation } from "react-i18next";
 
 const About: React.FC = () => {
+  const { t } = useTranslation("about");
+
   return (
     <section id="about" className="py-20 container-xd">
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-xd-blue mb-4">
-          {aboutConfig.title}
+          {t("title")}
         </h2>
-        <p className="text-xd-gray-1 max-w-2xl mx-auto">
-          {aboutConfig.subtitle}
-        </p>
+        <p className="text-xd-gray-1 max-w-2xl mx-auto">{t("subtitle")}</p>
       </div>
 
       {/* Cards Grid */}
@@ -21,8 +22,8 @@ const About: React.FC = () => {
           <ContentCard
             key={card.id}
             icon={card.icon}
-            title={card.title}
-            description={card.description}
+            title={t(`${card.id}.title`)}
+            description={t(`${card.id}.description`)}
             useShadow={true}
           />
         ))}

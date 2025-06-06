@@ -6,8 +6,11 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation(["footer", "navbar"]);
+
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
@@ -47,7 +50,7 @@ const Footer: React.FC = () => {
               />
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Your trusted partner in diabetes care management.
+              {t("description", { ns: "footer" })}
             </p>
 
             {/* Social Media Icons */}
@@ -81,7 +84,9 @@ const Footer: React.FC = () => {
 
           {/* Enlaces principales */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Navigation</h3>
+            <h3 className="font-semibold text-lg mb-4">
+              {t("navigation", { ns: "footer" })}
+            </h3>
             <ul className="space-y-2">
               {mainNavItems.map((item) => (
                 <li key={item.id}>
@@ -90,7 +95,7 @@ const Footer: React.FC = () => {
                     onClick={(e) => scrollToSection(e, item.href)}
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {item.label}
+                    {t(item.id, { ns: "navbar" })}
                   </a>
                 </li>
               ))}
@@ -99,7 +104,9 @@ const Footer: React.FC = () => {
 
           {/* Cuenta */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Account</h3>
+            <h3 className="font-semibold text-lg mb-4">
+              {t("account", { ns: "footer" })}
+            </h3>
             <ul className="space-y-2">
               {accountItems.map((item) => (
                 <li key={item.id}>
@@ -107,7 +114,7 @@ const Footer: React.FC = () => {
                     href={item.href}
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {item.label}
+                    {t(item.id, { ns: "navbar" })}
                   </a>
                 </li>
               ))}
@@ -118,18 +125,19 @@ const Footer: React.FC = () => {
         {/* Separador */}
         <div className="border-t border-gray-300 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-gray-300">
-            &copy; {new Date().getFullYear()} GlucoVa. All rights reserved.
+            &copy; {new Date().getFullYear()} GlucoVa.{" "}
+            {t("rights", { ns: "footer" })}
           </p>
 
           <div className="mt-4 sm:mt-0 text-sm text-gray-300">
             <a href="#privacy" className="hover:text-white mr-4">
-              Privacy
+              {t("links.privacy", { ns: "footer" })}
             </a>
             <a href="#terms" className="hover:text-white mr-4">
-              Terms
+              {t("links.terms", { ns: "footer" })}
             </a>
             <a href="#cookies" className="hover:text-white">
-              Cookies
+              {t("links.cookies", { ns: "footer" })}
             </a>
           </div>
         </div>
