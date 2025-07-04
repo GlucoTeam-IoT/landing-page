@@ -1,0 +1,97 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "features": "Características",
+    "download": "Descargar",
+    "team": "Equipo",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse"
+  },
+  "hero": {
+    "title": "Toma el Control de tu Viaje con la Diabetes",
+    "description": "GlucoVa te ayuda a monitorear, gestionar y mejorar tu cuidado de la diabetes con seguimiento inteligente e información personalizada.",
+    "button": "Descargar App"
+  },
+  "about": {
+    "title": "Acerca de GlucoVa",
+    "subtitle": "Conoce más sobre nuestra misión y valores",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Empoderar a las personas con diabetes a través de tecnología innovadora y soluciones de atención personalizadas."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Crear un mundo donde el manejo de la diabetes sea fluido, intuitivo y efectivo para todos."
+    },
+    "goals": {
+      "title": "Nuestros Objetivos",
+      "description": "Proporcionar herramientas accesibles y educación para mejorar la calidad de vida de las personas con diabetes."
+    }
+  },
+  "features": {
+    "title": "Características Principales",
+    "subtitle": "Descubre cómo GlucoVa transforma el manejo de la diabetes con herramientas potentes y fáciles de usar",
+    "glucose-tracking": {
+      "title": "Seguimiento de Glucosa",
+      "description": "Monitorización en tiempo real y análisis de datos históricos"
+    },
+    "medication-reminder": {
+      "title": "Recordatorios de Medicación",
+      "description": "Nunca olvides tu medicación con alertas inteligentes"
+    },
+    "nutrition-tips": {
+      "title": "Consejos Nutricionales",
+      "description": "Recomendaciones dietéticas personalizadas"
+    },
+    "daily-monitoring": {
+      "title": "Monitoreo Diario",
+      "description": "Herramientas completas de seguimiento de salud"
+    }
+  },
+  "download": {
+    "title": "Descarga GlucoVa",
+    "subtitle": "Comienza Hoy",
+    "description": "Descarga GlucoVa y da el primer paso hacia un mejor manejo de la diabetes.",
+    "ios": "Descargar para iOS",
+    "android": "Descargar para Android"
+  },
+  "team": {
+    "title": "Conoce a Nuestro Equipo",
+    "subtitle": "Conoce a las personas apasionadas detrás de la innovación de GlucoVa"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "name": {
+      "label": "Nombre",
+      "placeholder": "Tu nombre"
+    },
+    "email": {
+      "label": "Correo electrónico",
+      "placeholder": "tu.correo@ejemplo.com"
+    },
+    "message": {
+      "label": "Mensaje",
+      "placeholder": "Tu mensaje"
+    },
+    "button": "Enviar Mensaje",
+    "info": {
+      "title": "Ponte en Contacto",
+      "email": "contact@glucova.com",
+      "phone": "+51 902 614 512",
+      "address": "Av. de la Marina 2810, San Miguel 15087, Lima, Perú"
+    }
+  },
+  "footer": {
+    "description": "Tu aliado de confianza en el manejo del cuidado de la diabetes.",
+    "navigation": "Navegación",
+    "account": "Cuenta",
+    "rights": "Todos los derechos reservados.",
+    "links": {
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "cookies": "Cookies"
+    }
+  }
+}
