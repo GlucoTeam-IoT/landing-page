@@ -33,7 +33,7 @@ const DownloadApp: React.FC = () => {
           <div className="relative md:w-[416px] xl:w-[592px]">
             <div className="absolute rounded-full bg-gradient-to-r from-xd-blue/10 to-xd-red/10 blur-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <img
-              src="/images/downloadImg.png"
+              src="/images/downloadImg.webp"
               alt="GlucoVa App on devices"
               className="w-full h-auto rounded-3xl shadow-lg z-10 relative"
             />
