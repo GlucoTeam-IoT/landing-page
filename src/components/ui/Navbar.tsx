@@ -90,6 +90,7 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <motion.a
           href={navbarConfig.logo.href}
+          onClick={(e) => scrollToSection(e, navbarConfig.logo.href)}
           className="flex items-center"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}

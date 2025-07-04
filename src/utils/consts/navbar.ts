@@ -17,7 +17,7 @@ export const navbarConfig: NavbarConfig = {
   logo: {
     src: "/icons/glucova.png",
     alt: "Company Logo",
-    href: "/",
+    href: "#home",
   },
   navItems: [
     {
