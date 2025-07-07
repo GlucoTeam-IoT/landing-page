@@ -43,7 +43,13 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <Button variant="red" size="lg" rounded="full" href="#download">
+            <Button
+              variant="red"
+              size="lg"
+              rounded="full"
+              href="/glucova.apk"
+              download="glucova.apk"
+            >
               {t("button", { ns: "hero" })}
             </Button>
           </motion.div>

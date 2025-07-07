@@ -71,7 +71,8 @@ const DownloadApp: React.FC = () => {
 
             {/* Android Download Button */}
             <a
-              href="#android-download"
+              href="/glucova.apk"
+              download="glucova.apk"
               className="inline-flex items-center justify-center bg-xd-red text-white px-6 py-3 rounded-2xl hover:bg-opacity-90 transition-all"
             >
               <BiLogoPlayStore className="h-6 w-6 mr-2" />

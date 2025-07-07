@@ -8,6 +8,7 @@ export interface ButtonProps {
   rounded?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   fullWidth?: boolean;
   href?: string;
+  download?: string;
   onClick?: (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
   ) => void;
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   rounded = "2xl",
   fullWidth = false,
   href,
+  download,
   onClick,
   className = "",
 }) => {
@@ -65,7 +67,12 @@ const Button: React.FC<ButtonProps> = ({
   // Render button or link
   if (href) {
     return (
-      <a href={href} onClick={onClick as any} className={classes}>
+      <a
+        href={href}
+        download={download}
+        onClick={onClick as any}
+        className={classes}
+      >
         {children}
       </a>
     );
